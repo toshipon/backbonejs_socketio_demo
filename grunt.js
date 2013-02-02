@@ -31,37 +31,37 @@ module.exports = function(grunt) {
       }
     },
     coffee: {
-	  app: {
-	    src   : ['public/javascripts/**/*.coffee'],
-	    dest  : 'js',
-	    options: {
-	    	preserve_dirs: true,
-	        base_path: 'public/javascripts'
-	    }
-	  },
-	  test:{
-	    src : ['test/spec_coffee/**/*.coffee'],
-	    dest: 'test/spec/',
-	    options: {
-	        preserve_dirs: true,
-	        base_path: 'test/spec_coffee'
-	    }
-	  }
-	},
-  compass: {
-	  compile: {
-		  src: 'public/stylesheets/**/*.scss',
-		  dest: 'public/stylesheets/main.css',
-		  options: {
-		    'include css': true,
-		    compress: true
-		  },
-		  files: {
-		    'css/main.css': 'sass/main.styl'
-		  }
-		}
-  },
-	watch: {
+  	  app: {
+  	    src   : ['**/*.coffee'],
+  	    dest  : './',
+  	    options: {
+  	    	preserve_dirs: true,
+  	        base_path: './'
+  	    }
+  	  },
+  	  test:{
+  	    src : ['test/spec_coffee/**/*.coffee'],
+  	    dest: 'test/spec/',
+  	    options: {
+  	        preserve_dirs: true,
+  	        base_path: 'test/spec_coffee'
+  	    }
+  	  }
+  	},
+    compass: {
+  	  compile: {
+  		  src: 'public/stylesheets/**/*.scss',
+  		  dest: 'public/stylesheets/main.css',
+  		  options: {
+  		    'include css': true,
+  		    compress: true
+  		  },
+  		  files: {
+  		    'css/main.css': 'sass/main.styl'
+  		  }
+  		}
+    },
+  	watch: {
       coffee: {
         files: ['<config:coffee.app.src>', '<config:coffee.test.src>'],
         tasks: 'coffee'

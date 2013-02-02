@@ -3,6 +3,7 @@ body {
 }
 
 a {
+	cursor: pointer;
 }
 
 .navbar-inner {

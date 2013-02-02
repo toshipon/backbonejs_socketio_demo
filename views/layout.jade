@@ -1,9 +1,21 @@
 doctype 5
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		div.navbar.navbar-fixed-top
+			div.navbar-inner
+				.container
+					a.brand socket.io client demo
+					.nav-collapse
+						ul.nav
+							li
+								a.placer Placer
+							li
+								a.transrator Transrator
+
+		block content
+		script(src='/javascripts/lib/require-jquery.js', data-main='/javascripts/main.js')
 
