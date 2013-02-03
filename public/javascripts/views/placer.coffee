@@ -1,7 +1,7 @@
 define ['backbone'], (Backbone) ->
-	class MainView extends Backbone.View 
+	class PlacerView extends Backbone.View 
 
-		el: 'body'
+		el: '#placer'
 		
 		events:
 			"click #header .brand": "clickLinkLogo"

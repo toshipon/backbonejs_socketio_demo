@@ -18,6 +18,8 @@ require.config
 		underscore: 'lib/underscore',
 		backbone: 'lib/backbone',
 		text: 'lib/text'
+		socketio: 'lib/socket.io'
+		socket: 'common/socket' # socket.io rapper
 	},
 	urlArgs: "bust=" + new Date().getTime()
 

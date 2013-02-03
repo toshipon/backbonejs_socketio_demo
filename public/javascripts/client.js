@@ -16,7 +16,9 @@ require.config({
   paths: {
     underscore: 'lib/underscore',
     backbone: 'lib/backbone',
-    text: 'lib/text'
+    text: 'lib/text',
+    socketio: 'lib/socket.io',
+    socket: 'common/socket'
   },
   urlArgs: "bust=" + new Date().getTime()
 });

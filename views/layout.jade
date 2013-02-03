@@ -5,7 +5,7 @@ html
 		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
-		div.navbar.navbar-fixed-top
+		div#header.navbar.navbar-fixed-top
 			div.navbar-inner
 				.container
 					a.brand socket.io client demo
@@ -17,5 +17,5 @@ html
 								a.transrator Transrator
 
 		block content
-		script(src='/javascripts/lib/require-jquery.js', data-main='/javascripts/main.js')
+		script(src='/javascripts/lib/require-jquery.js', data-main='/javascripts/client.js')
 

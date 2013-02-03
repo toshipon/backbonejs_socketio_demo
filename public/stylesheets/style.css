@@ -1,5 +1,6 @@
 body {
 	padding-top: 80px;
+	font-family: "Open Sans", 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
 a {
@@ -9,4 +10,8 @@ a {
 .navbar-inner {
 	background-color: #1CAD7E;
 	border: none;
+}
+
+.hide {
+	display: none;
 }

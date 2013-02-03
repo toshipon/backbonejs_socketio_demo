@@ -1,7 +1,7 @@
 define ['backbone'], (Backbone) ->
-	class MainView extends Backbone.View 
+	class TransratorView extends Backbone.View 
 
-		el: 'body'
+		el: '#transrator'
 		
 		events:
 			"click #header .brand": "clickLinkLogo"

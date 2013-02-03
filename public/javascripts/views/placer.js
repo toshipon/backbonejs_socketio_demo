@@ -2,42 +2,42 @@ var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 define(['backbone'], function(Backbone) {
-  var MainView;
-  return MainView = (function(_super) {
+  var PlacerView;
+  return PlacerView = (function(_super) {
 
-    __extends(MainView, _super);
+    __extends(PlacerView, _super);
 
-    function MainView() {
-      return MainView.__super__.constructor.apply(this, arguments);
+    function PlacerView() {
+      return PlacerView.__super__.constructor.apply(this, arguments);
     }
 
-    MainView.prototype.el = 'body';
+    PlacerView.prototype.el = '#placer';
 
-    MainView.prototype.events = {
+    PlacerView.prototype.events = {
       "click #header .brand": "clickLinkLogo",
       "click #header .navbar-inner .placer": "clickLinkPlacer",
       "click #header .navbar-inner .transrator": "clickLinkTransrator"
     };
 
-    MainView.prototype.clickLinkLogo = function() {
+    PlacerView.prototype.clickLinkLogo = function() {
       return Gengo.router.navigate('', {
         trigger: true
       });
     };
 
-    MainView.prototype.clickLinkTransrator = function() {
+    PlacerView.prototype.clickLinkTransrator = function() {
       return Gengo.router.navigate('transrator', {
         trigger: true
       });
     };
 
-    MainView.prototype.clickLinkPlacer = function() {
+    PlacerView.prototype.clickLinkPlacer = function() {
       return Gengo.router.navigate('placer', {
         trigger: true
       });
     };
 
-    return MainView;
+    return PlacerView;
 
   })(Backbone.View);
 });
