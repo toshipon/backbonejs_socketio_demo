@@ -31,14 +31,22 @@ module.exports = function(grunt) {
       }
     },
     coffee: {
-  	  app: {
-  	    src   : ['**/*.coffee'],
-  	    dest  : './',
+  	  client: {
+  	    src   : ['public/coffee/**/*.coffee'],
+  	    dest  : 'public/javascripts',
   	    options: {
   	    	preserve_dirs: true,
-  	        base_path: './'
+  	        base_path: 'public/coffee'
   	    }
   	  },
+      server: {
+        src   : ['*.coffee', 'routes/*.coffee'],
+        dest  : './',
+        options: {
+          preserve_dirs: true,
+            base_path: './'
+        }
+      },
   	  test:{
   	    src : ['test/spec_coffee/**/*.coffee'],
   	    dest: 'test/spec/',
@@ -63,7 +71,7 @@ module.exports = function(grunt) {
     },
   	watch: {
       coffee: {
-        files: ['<config:coffee.app.src>', '<config:coffee.test.src>'],
+        files: ['<config:coffee.app.client>', '<config:coffee.app.server>', '<config:coffee.test.src>'],
         tasks: 'coffee'
       // },
       // compass: {
