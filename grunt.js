@@ -71,7 +71,7 @@ module.exports = function(grunt) {
     },
   	watch: {
       coffee: {
-        files: ['<config:coffee.app.client>', '<config:coffee.app.server>', '<config:coffee.test.src>'],
+        files: ['<config:coffee.client.src>', '<config:coffee.server.src>', '<config:coffee.test.src>'],
         tasks: 'coffee'
       // },
       // compass: {
