@@ -20,6 +20,7 @@ require.config
 		text: 'lib/text'
 		socketio: 'lib/socket.io'
 		socket: 'common/socket' # socket.io rapper
+		jade: 'lib/jade.min'
 	},
 	urlArgs: "bust=" + new Date().getTime()
 

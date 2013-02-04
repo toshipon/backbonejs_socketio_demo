@@ -12,6 +12,6 @@ a {
 	border: none;
 }
 
-.hide {
+#main,#placer,#transrator {
 	display: none;
 }

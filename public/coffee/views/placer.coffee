@@ -1,18 +1,23 @@
-define ['backbone'], (Backbone) ->
-	class PlacerView extends Backbone.View 
+define ['backbone'
+	,'collections/placer/requestList']
+	, (Backbone, RequestList) ->
+		class PlacerView extends Backbone.View 
 
-		el: '#placer'
-		
-		events:
-			"click #header .brand": "clickLinkLogo"
-			"click #header .navbar-inner .placer": "clickLinkPlacer"
-			"click #header .navbar-inner .transrator": "clickLinkTransrator"
+			el: '#placer'
 
-		clickLinkLogo: ()->
-			Gengo.router.navigate '', {trigger: true}
+			template: '#request_list_li'
+			
+			events:
+				"click #header .brand": "clickLinkLogo"
 
-		clickLinkTransrator: ()->
-			Gengo.router.navigate 'transrator', {trigger: true}
+			initialize: ->
 
-		clickLinkPlacer: ()->
-			Gengo.router.navigate 'placer', {trigger: true}
+
+			clickLinkLogo: ()->
+				Gengo.router.navigate '', {trigger: true}
+
+			show: ()->
+				@$el.hide().removeClass('hide').fadeIn('normal')
+
+			hide: ()->
+				@$el.hide()

@@ -5,14 +5,13 @@ define ['backbone'], (Backbone) ->
 		
 		events:
 			"click #header .brand": "clickLinkLogo"
-			"click #header .navbar-inner .placer": "clickLinkPlacer"
-			"click #header .navbar-inner .transrator": "clickLinkTransrator"
 
 		clickLinkLogo: ()->
 			Gengo.router.navigate '', {trigger: true}
 
-		clickLinkTransrator: ()->
-			Gengo.router.navigate 'transrator', {trigger: true}
+		show: ()->
+			@$el.hide().removeClass('hide').fadeIn('normal')
 
-		clickLinkPlacer: ()->
-			Gengo.router.navigate 'placer', {trigger: true}
+		hide: ()->
+			@$el.hide()
+

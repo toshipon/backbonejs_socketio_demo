@@ -18,7 +18,8 @@ require.config({
     backbone: 'lib/backbone',
     text: 'lib/text',
     socketio: 'lib/socket.io',
-    socket: 'common/socket'
+    socket: 'common/socket',
+    jade: 'lib/jade.min'
   },
   urlArgs: "bust=" + new Date().getTime()
 });

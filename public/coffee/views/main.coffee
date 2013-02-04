@@ -16,3 +16,9 @@ define ['backbone'], (Backbone) ->
 
 		clickLinkPlacer: ()->
 			Gengo.router.navigate 'placer', {trigger: true}
+
+		showMain: ()->
+			@$el.find('#main').hide().removeClass('hide').fadeIn('normal')
+
+		hideMain: ()->
+			@$el.find('#main').hide()

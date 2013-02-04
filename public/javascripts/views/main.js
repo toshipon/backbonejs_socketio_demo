@@ -37,6 +37,14 @@ define(['backbone'], function(Backbone) {
       });
     };
 
+    MainView.prototype.showMain = function() {
+      return this.$el.find('#main').hide().removeClass('hide').fadeIn('normal');
+    };
+
+    MainView.prototype.hideMain = function() {
+      return this.$el.find('#main').hide();
+    };
+
     return MainView;
 
   })(Backbone.View);

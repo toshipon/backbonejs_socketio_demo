@@ -14,9 +14,7 @@ define(['backbone'], function(Backbone) {
     TransratorView.prototype.el = '#transrator';
 
     TransratorView.prototype.events = {
-      "click #header .brand": "clickLinkLogo",
-      "click #header .navbar-inner .placer": "clickLinkPlacer",
-      "click #header .navbar-inner .transrator": "clickLinkTransrator"
+      "click #header .brand": "clickLinkLogo"
     };
 
     TransratorView.prototype.clickLinkLogo = function() {
@@ -25,16 +23,12 @@ define(['backbone'], function(Backbone) {
       });
     };
 
-    TransratorView.prototype.clickLinkTransrator = function() {
-      return Gengo.router.navigate('transrator', {
-        trigger: true
-      });
+    TransratorView.prototype.show = function() {
+      return this.$el.hide().removeClass('hide').fadeIn('normal');
     };
 
-    TransratorView.prototype.clickLinkPlacer = function() {
-      return Gengo.router.navigate('placer', {
-        trigger: true
-      });
+    TransratorView.prototype.hide = function() {
+      return this.$el.hide();
     };
 
     return TransratorView;
