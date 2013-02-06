@@ -7,7 +7,7 @@ define ['backbone'], (Backbone) ->
 			"click #header .brand": "clickLinkLogo"
 
 		clickLinkLogo: ()->
-			Gengo.router.navigate '', {trigger: true}
+			App.router.navigate '', {trigger: true}
 
 		show: ()->
 			@$el.hide().removeClass('hide').fadeIn('normal')

@@ -56,6 +56,11 @@ module.exports = function(grunt) {
   	    }
   	  }
   	},
+    bower: {
+      dev: {
+        dest: 'public/javascripts/lib'
+      }
+    },
     compass: {
   	  compile: {
   		  src: 'public/stylesheets/**/*.scss',
@@ -69,6 +74,13 @@ module.exports = function(grunt) {
   		  }
   		}
     },
+    sass: { 
+        dev: {
+            files: { 
+                'public/stylesheets/style.css': 'public/sass/style.scss'
+            }
+        }
+    },
   	watch: {
       coffee: {
         files: ['<config:coffee.client.src>', '<config:coffee.server.src>', '<config:coffee.test.src>'],
@@ -77,6 +89,10 @@ module.exports = function(grunt) {
       // compass: {
       //   files: ['<config:stylus.compile.src>'],
       //   tasks: 'compass'
+      // },
+      // sass: {
+      //   files: ['<config:sass.dev.files>'],
+      //   tasks: 'sass'
       }
     },
     jshint: {
@@ -128,23 +144,24 @@ module.exports = function(grunt) {
 	            exports: 'Backbone'
 	          }
 	        },
-            pragmas: {
-                doExclude: true
-            },
-            skipModuleInsertion: false,
-            optimizeAllPluginResources: false,
-            findNestedDependencies: false
+          pragmas: {
+              doExclude: true
+          },
+          skipModuleInsertion: false,
+          optimizeAllPluginResources: false,
+          findNestedDependencies: false
         }
-     }
+      }
   });
 
   grunt.loadNpmTasks('grunt-contrib');
   grunt.loadNpmTasks('grunt-coffee');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-requirejs');
+  grunt.loadNpmTasks('grunt-bower');
 
   // Default task.
 //  grunt.registerTask('default', 'lint qunit concat min');
   grunt.registerTask('default', 'watch');
-  grunt.registerTask('release', 'coffee requirejs:js');
 
 };

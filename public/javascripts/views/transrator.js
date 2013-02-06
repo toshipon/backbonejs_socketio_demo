@@ -18,7 +18,7 @@ define(['backbone'], function(Backbone) {
     };
 
     TransratorView.prototype.clickLinkLogo = function() {
-      return Gengo.router.navigate('', {
+      return App.router.navigate('', {
         trigger: true
       });
     };

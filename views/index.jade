@@ -7,17 +7,48 @@ block content
 				h1 Demo of client app due to 
 					a(href="http://socket.io/") socket.io
 				p This project is Client Application demo of Transrafor Service.
+			
 				p Please choose (Placer | Transrafor) from menu.
 
+		// Placer View
 		#placer
 			h1 Placer View
-			ul#request_list
+			a(role="button")#add_request_btn.btn.btn-primary Add request
+			
+			#request_list_section
+
+			div#add_request_modal.modal.hide.fade
+				div.modal-header
+					button(type="button", data-dismiss="modal", aria-hidden="true").close
+					h3 Add Text to Translate
+				div.modal-body
+					textarea(rows="2")#request_textarea
+					div.row
+						.span1
+						select.span3
+							option ja
+						select.span3
+							option en
+						.span5
+				div.modal-footer
+					a(data-dismiss="modal", aria-hidden="true").btn close
+					a.save_btn.btn.btn-primary Save
 
 
+		// Transrator View
 		#transrator
 			h1 Transrator View
 
 
 	script(type="text/template", id="request_list_li")
-		li
-			p hogehoge
+		table.table.table-bordered.table-striped.table-hover
+			thead
+				tr
+					th #
+					th text
+			tbody
+				<% _.each(requests, function(request) {  %>
+				tr
+					td <%= request.requestId %>
+					td <%= request.text %>
+				<% }); %>

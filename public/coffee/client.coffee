@@ -1,4 +1,4 @@
-Gengo = {}
+App = {} unless App?
 
 require.config
 	shim: {
@@ -21,16 +21,18 @@ require.config
 		socketio: 'lib/socket.io'
 		socket: 'common/socket' # socket.io rapper
 		jade: 'lib/jade.min'
+		bootstrap: 'lib/bootstrap'
 	},
 	urlArgs: "bust=" + new Date().getTime()
 
 require [
-	'views/main',
+	'views/main'
 	'routers/rooter'
+	'bootstrap'
 ], (MainView, Router) ->
 
 	console.log("/main start")
-	Gengo.router = new Router()
+	App.router = new Router()
 	
 	Backbone.history.start({pushState:true})
 	new MainView()

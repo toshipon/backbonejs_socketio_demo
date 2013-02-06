@@ -9,13 +9,13 @@ define ['backbone'], (Backbone) ->
 			"click #header .navbar-inner .transrator": "clickLinkTransrator"
 
 		clickLinkLogo: ()->
-			Gengo.router.navigate '', {trigger: true}
+			App.router.navigate '', {trigger: true}
 
 		clickLinkTransrator: ()->
-			Gengo.router.navigate 'transrator', {trigger: true}
+			App.router.navigate 'transrator', {trigger: true}
 
 		clickLinkPlacer: ()->
-			Gengo.router.navigate 'placer', {trigger: true}
+			App.router.navigate 'placer', {trigger: true}
 
 		showMain: ()->
 			@$el.find('#main').hide().removeClass('hide').fadeIn('normal')

@@ -15,3 +15,19 @@ a {
 #main,#placer,#transrator {
 	display: none;
 }
+
+
+#request_list_section {
+	margin-top: 15px;
+}
+
+/* add request modal */
+.modal h3 {
+	color: #ffffff;
+}
+.modal .modal-body,
+.modal .modal-footer {
+	background-color: #ffffff;
+}
+.modal .modal-body textarea { width: 97%; }
+.modal .modal-body select { width: 50px; }

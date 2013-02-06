@@ -20,19 +20,19 @@ define(['backbone'], function(Backbone) {
     };
 
     MainView.prototype.clickLinkLogo = function() {
-      return Gengo.router.navigate('', {
+      return App.router.navigate('', {
         trigger: true
       });
     };
 
     MainView.prototype.clickLinkTransrator = function() {
-      return Gengo.router.navigate('transrator', {
+      return App.router.navigate('transrator', {
         trigger: true
       });
     };
 
     MainView.prototype.clickLinkPlacer = function() {
-      return Gengo.router.navigate('placer', {
+      return App.router.navigate('placer', {
         trigger: true
       });
     };

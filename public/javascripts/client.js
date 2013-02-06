@@ -1,6 +1,8 @@
-var Gengo;
+var App;
 
-Gengo = {};
+if (typeof App === "undefined" || App === null) {
+  App = {};
+}
 
 require.config({
   shim: {
@@ -19,14 +21,15 @@ require.config({
     text: 'lib/text',
     socketio: 'lib/socket.io',
     socket: 'common/socket',
-    jade: 'lib/jade.min'
+    jade: 'lib/jade.min',
+    bootstrap: 'lib/bootstrap'
   },
   urlArgs: "bust=" + new Date().getTime()
 });
 
-require(['views/main', 'routers/rooter'], function(MainView, Router) {
+require(['views/main', 'routers/rooter', 'bootstrap'], function(MainView, Router) {
   console.log("/main start");
-  Gengo.router = new Router();
+  App.router = new Router();
   Backbone.history.start({
     pushState: true
   });
