@@ -19,8 +19,7 @@ require.config({
     underscore: 'lib/underscore',
     backbone: 'lib/backbone',
     text: 'lib/text',
-    socketio: 'lib/socket.io',
-    socket: 'common/socket',
+    socketio: 'lib/socket.io.min',
     jade: 'lib/jade.min',
     bootstrap: 'lib/bootstrap'
   },

@@ -2,8 +2,8 @@ doctype 5
 html
 	head
 		title= title
-		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(type="text/css", rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+		link(type="text/css", rel='stylesheet', href='/stylesheets/style.css')
 	body
 		div#header.navbar.navbar-fixed-top
 			div.navbar-inner
@@ -17,5 +17,5 @@ html
 								a.transrator Transrator
 
 		block content
-		script(src='/javascripts/lib/require-jquery.js', data-main='/javascripts/client.js')
+		script(type="text/javascript", src='/javascripts/lib/require-jquery.js', data-main='/javascripts/client.js')
 

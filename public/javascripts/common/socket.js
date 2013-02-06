@@ -1,17 +1,19 @@
 
-define(['underscore', 'socketio'], function(_, io) {
-  var socket;
-  socket = io.connect();
+define(['underscore', 'socketio'], function(_) {
+  console.log("========io.connect() ========");
+  App.socket = io.connect();
   return {
     on: function(eventName, callback) {
-      return socket.on(eventName, function() {
+      console.log("========socket.on " + eventName + " ========");
+      return App.socket.on(eventName, function() {
         var args;
         args = arguments;
         return _.bind(callback, this);
       });
     },
     emit: function(eventName, data, callback) {
-      return socket.emit(eventName, data, function() {
+      console.log("========socket.emit " + eventName + " ========");
+      return App.socket.emit(eventName, data, function() {
         var args;
         args = arguments;
         return _.bind(callback, this);

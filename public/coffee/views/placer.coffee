@@ -1,8 +1,9 @@
 define [ 'underscore'
 	,'backbone'
 	,'collections/placer/requestList'
-	,'models/placer/request']
-	, (_, Backbone, RequestList, RequestModel) ->
+	,'models/placer/request'
+	,'common/socket']
+	, (_, Backbone, RequestList, RequestModel, socket) ->
 		class PlacerView extends Backbone.View 
 
 			el: '#placer'
@@ -14,18 +15,33 @@ define [ 'underscore'
 				"click #add_request_modal .save_btn": "clickModelSaveBtn"
 
 			initialize: ->
+				console.log "placerView.initialize"
 				@modal = @$el.find "#add_request_modal"
+				# socket.on 'send:message', _.bind(@receiveMessage, @)
+				socket.on 'send:message', ()->
+					console.log "hogehogheoheogheg"
 
 			clickOpenModel: ()->
+				console.log "placerView.clickOpenModel"
 				@modal.modal().find('textarea').val('')
 
 			clickModelSaveBtn: ()->
+				console.log "placerView.clickModelSaveBtn"
 				text = @modal.find('textarea').val()
 				model = new RequestModel(text: text)
 				model.set 'requestId', model.cid
 				@collection.add(model)
 				@render()
 				@modal.find('.close').click()
+
+				socket.emit('send:message', {
+			      message: text
+			    });
+
+			receiveMessage: (message)->
+				console.log "placerView.receiveMessage"
+				console.log "================="
+				console.dir message
 
 			render: ->
 				tmp = $(@template).text()

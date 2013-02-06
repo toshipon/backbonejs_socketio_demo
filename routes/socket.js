@@ -56,6 +56,7 @@ module.exports = function(socket) {
     name: name
   });
   socket.on('send:message', function(data) {
+    console.log("=========send:message==============");
     return socket.broadcast.emit('send:message', {
       user: name,
       text: data.message

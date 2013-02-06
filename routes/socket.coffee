@@ -55,6 +55,7 @@ module.exports =  (socket)->
 
   # broadcast a user's message to other users
   socket.on 'send:message',  (data)->
+    console.log "=========send:message=============="
     socket.broadcast.emit 'send:message',
       user: name,
       text: data.message

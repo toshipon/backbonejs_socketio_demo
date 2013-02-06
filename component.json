@@ -8,7 +8,7 @@
     "jade": "0.28.0",
     "requirejs": "2.1.4",
     "requirejs-text": "2.0.5",
-    "socket.io": "0.9.11",
+    "socket.io": "0.9.4",
     "underscore": "1.4.4"
   }
 }

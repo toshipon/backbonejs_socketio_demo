@@ -7,19 +7,18 @@ require.config
 		},
 		'backbone': {
 			deps: [
-				'underscore',
+				'underscore'
 				'jquery'
 			],
 			exports: 'Backbone'
 		}
 	},
-	baseUrl: 'javascripts',
+	baseUrl: 'javascripts'
 	paths: {
-		underscore: 'lib/underscore',
-		backbone: 'lib/backbone',
+		underscore: 'lib/underscore'
+		backbone: 'lib/backbone'
 		text: 'lib/text'
-		socketio: 'lib/socket.io'
-		socket: 'common/socket' # socket.io rapper
+		socketio: 'lib/socket.io.min'
 		jade: 'lib/jade.min'
 		bootstrap: 'lib/bootstrap'
 	},

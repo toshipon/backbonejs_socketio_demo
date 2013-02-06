@@ -1,13 +1,16 @@
-define(['underscore', 'socketio'], (_, io)->
-	socket = io.connect()
+define(['underscore', 'socketio'], (_)->
+	console.log "========io.connect() ========"
+	App.socket = io.connect()
 	return {
 		on: (eventName, callback)->
-			socket.on(eventName, ()->
+			console.log "========socket.on #{eventName} ========"
+			App.socket.on(eventName, ()->
 				args = arguments
 				_.bind(callback, @)
 			)
 		emit: (eventName, data, callback)->
-			socket.emit(eventName, data, ()->
+			console.log "========socket.emit #{eventName} ========"
+			App.socket.emit(eventName, data, ()->
 				args = arguments
 				_.bind(callback, @)
 			)
