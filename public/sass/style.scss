@@ -1,0 +1,27 @@
+body {
+	padding-top: 80px;
+	font-family: "Open Sans", 'Hiragino Kaku Gothic Pro', sans-serif;
+}
+
+a {
+	cursor: pointer;
+}
+
+.navbar-inner {
+	background-color: #1CAD7E;
+	border: none;
+}
+
+#main,#placer,#transrator {
+	display: none;
+}
+
+.modal h3 {
+	color: #ffffff;
+}
+.modal .modal-body,
+.modal .modal-footer {
+	background-color: #ffffff;
+}
+.modal .modal-body textarea { width: 97%; }
+.modal .modal-body select { width: 50px; }
