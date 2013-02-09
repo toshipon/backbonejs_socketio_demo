@@ -6,9 +6,6 @@
     "node": "0.8.x",
     "npm": "1.1.x"
   },
-  "scripts": {
-    "start": "node app"
-  },
   "dependencies": {
     "express": "3.0.4",
     "jade": "*",
