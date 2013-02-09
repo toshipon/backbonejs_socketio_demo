@@ -1,6 +1,6 @@
 @import "compass/utilities";
 @import "compass/css3";
-@import "./boostrap.min.css";
+@import "./bootstrap.min.css";
 
 body {
 	padding-top: 80px;
@@ -26,13 +26,14 @@ a {
 }
 
 /* add request modal */
-.modal h3 {
-	color: #ffffff;
-
+.modal {
+	h3 {color: #ffffff;}
 	.modal-body,
 	.modal-footer {
 		background-color: #ffffff; 
 	}
+	.modal-body {
+		textarea { width: 97%;}
+		select { width: 50px;}
+	}
 }
-.modal .modal-body textarea { width: 97%; }
-.modal .modal-body select { width: 50px; }

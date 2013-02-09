@@ -59,6 +59,9 @@ module.exports = function(socket) {
     console.log("=========send:message==============");
     return socket.broadcast.emit('send:message', {
       user: name,
+      placer: data.placer,
+      transrator: data.transrator,
+      requestId: data.requestId,
       text: data.message
     });
   });

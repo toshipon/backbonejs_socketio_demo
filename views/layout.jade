@@ -7,13 +7,16 @@ html
 		div#header.navbar.navbar-fixed-top
 			div.navbar-inner
 				.container
-					a.brand socket.io client demo
+					a(href="/").brand= title
 					.nav-collapse
 						ul.nav
 							li
-								a.placer Placer
+								a(href="/placer").placer Placer
 							li
-								a.transrator Transrator
+								a(href="/transrator").transrator Transrator
+						ul.nav.pull-right
+							li
+								a.user_name
 
 		block content
 		script(type="text/javascript", src='/javascripts/lib/require-jquery.js', data-main='/javascripts/client.js')

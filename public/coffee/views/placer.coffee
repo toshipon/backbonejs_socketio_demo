@@ -17,9 +17,7 @@ define [ 'underscore'
 			initialize: ->
 				console.log "placerView.initialize"
 				@modal = @$el.find "#add_request_modal"
-				# socket.on 'send:message', _.bind(@receiveMessage, @)
-				socket.on 'send:message', ()->
-					console.log "hogehogheoheogheg"
+				socket.on 'send:message', _.bind(@receiveMessage, @)
 
 			clickOpenModel: ()->
 				console.log "placerView.clickOpenModel"
@@ -28,7 +26,7 @@ define [ 'underscore'
 			clickModelSaveBtn: ()->
 				console.log "placerView.clickModelSaveBtn"
 				text = @modal.find('textarea').val()
-				model = new RequestModel(text: text)
+				model = new RequestModel(text: text, placer: App.model.user.get('userName'))
 				model.set 'requestId', model.cid
 				@collection.add(model)
 				@render()
@@ -36,12 +34,16 @@ define [ 'underscore'
 
 				socket.emit('send:message', {
 			      message: text
-			    });
+			      requestId: model.cid
+			      placer: model.get 'placer'
+			    })
 
-			receiveMessage: (message)->
+			receiveMessage: (result)->
 				console.log "placerView.receiveMessage"
 				console.log "================="
-				console.dir message
+				if result.user == App.model.user.get('userName')
+					@collection.add(new RequestModel(result))
+					@render()
 
 			render: ->
 				tmp = $(@template).text()

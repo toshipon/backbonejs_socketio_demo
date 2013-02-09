@@ -8,7 +8,7 @@ define(['underscore', 'socketio'], function(_) {
       return App.socket.on(eventName, function() {
         var args;
         args = arguments;
-        return _.bind(callback, this);
+        return callback.apply(callback, args);
       });
     },
     emit: function(eventName, data, callback) {
@@ -16,7 +16,9 @@ define(['underscore', 'socketio'], function(_) {
       return App.socket.emit(eventName, data, function() {
         var args;
         args = arguments;
-        return _.bind(callback, this);
+        if (callback != null) {
+          return callback.apply(callback, args);
+        }
       });
     }
   };

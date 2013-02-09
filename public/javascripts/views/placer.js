@@ -23,9 +23,7 @@ define(['underscore', 'backbone', 'collections/placer/requestList', 'models/plac
     PlacerView.prototype.initialize = function() {
       console.log("placerView.initialize");
       this.modal = this.$el.find("#add_request_modal");
-      return socket.on('send:message', function() {
-        return console.log("hogehogheoheogheg");
-      });
+      return socket.on('send:message', _.bind(this.receiveMessage, this));
     };
 
     PlacerView.prototype.clickOpenModel = function() {
@@ -38,21 +36,27 @@ define(['underscore', 'backbone', 'collections/placer/requestList', 'models/plac
       console.log("placerView.clickModelSaveBtn");
       text = this.modal.find('textarea').val();
       model = new RequestModel({
-        text: text
+        text: text,
+        placer: App.model.user.get('userName')
       });
       model.set('requestId', model.cid);
       this.collection.add(model);
       this.render();
       this.modal.find('.close').click();
       return socket.emit('send:message', {
-        message: text
+        message: text,
+        requestId: model.cid,
+        placer: model.get('placer')
       });
     };
 
-    PlacerView.prototype.receiveMessage = function(message) {
+    PlacerView.prototype.receiveMessage = function(result) {
       console.log("placerView.receiveMessage");
       console.log("=================");
-      return console.dir(message);
+      if (result.user === App.model.user.get('userName')) {
+        this.collection.add(new RequestModel(result));
+        return this.render();
+      }
     };
 
     PlacerView.prototype.render = function() {
