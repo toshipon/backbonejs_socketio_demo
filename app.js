@@ -48,4 +48,11 @@ socketIO = require('socket.io');
 
 io = socketIO.listen(server);
 
+if (process.env.PORT) {
+  io.configure(function() {
+    io.set("transports", ["xhr-polling"]);
+    return io.set("polling duration", 10);
+  });
+}
+
 io.sockets.on('connection', socket);

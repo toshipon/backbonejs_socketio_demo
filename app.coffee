@@ -42,6 +42,13 @@ server = http.createServer(app).listen(app.get('port'), ()->
 # start socket.io
 socketIO = require 'socket.io'
 io = socketIO.listen server
+
+# Heroku config only
+if process.env.PORT
+  io.configure(()-> 
+    io.set("transports", ["xhr-polling"]) 
+    io.set("polling duration", 10)
+  )
 io.sockets.on 'connection', socket
 
     
