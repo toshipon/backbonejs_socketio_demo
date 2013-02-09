@@ -46,7 +46,7 @@ define [ 'underscore'
 					@render()
 
 			render: ->
-				tmp = $(@template).text()
+				tmp = @$el.find(@template).text()
 				@$el.find('#request_list_section').empty().append(_.template(tmp, {requests: @collection.toJSON()}))
 
 			show: ()->

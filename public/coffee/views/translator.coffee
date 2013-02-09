@@ -1,12 +1,12 @@
 define ['underscore'
 	,'backbone'
-	,'collections/transrator/transrationList'
-	,'models/transrator/transration'
+	,'collections/translator/translationList'
+	,'models/translator/translation'
 	,'common/socket']
 	, (_, Backbone, TransrationList, TransrationModel, socket) ->
-		class TransratorView extends Backbone.View 
+		class TranslatorView extends Backbone.View 
 
-			el: '#transrator'
+			el: '#translator'
 
 			template: '#transration_list_li'
 			
@@ -17,15 +17,15 @@ define ['underscore'
 				socket.on 'send:message', _.bind(@receiveMessage, @)
 
 			receiveMessage: (result)->
-				console.log "transratorView.receiveMessage"
+				console.log "translatorView.receiveMessage"
 				console.log "================="
 				if result.user != App.model.user.get 'userName'
-					@collection.add(new TransrationModel(result))
+					@collection.add(new TranslationModel(result))
 					@render()
 
 			render: ->
-				tmp = $(@template).text()
-				@$el.find('#transration_list_section').empty().append(_.template(tmp, {transrations: @collection.toJSON()}))
+				tmp = @$el.find(@template).text()
+				@$el.find('#translation_list_section').empty().append(_.template(tmp, {translations: @collection.toJSON()}))
 
 			clickLinkLogo: ()->
 				App.router.navigate '', {trigger: true}

@@ -6,7 +6,7 @@ define ['backbone', 'models/user'], (Backbone, UserModel) ->
 		events:
 			"click #header .brand": "clickLinkLogo"
 			"click #header .navbar-inner .placer": "clickLinkPlacer"
-			"click #header .navbar-inner .transrator": "clickLinkTransrator"
+			"click #header .navbar-inner .translator": "clickLinkTranslator"
 
 		initialize: ->
 			App.model = {}
@@ -22,8 +22,8 @@ define ['backbone', 'models/user'], (Backbone, UserModel) ->
 			App.router.navigate '', {trigger: true}
 			return false
 
-		clickLinkTransrator: ()->
-			App.router.navigate 'transrator', {trigger: true}
+		clickLinkTranslator: ()->
+			App.router.navigate 'translator', {trigger: true}
 			return false
 
 		clickLinkPlacer: ()->

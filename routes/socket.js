@@ -60,7 +60,7 @@ module.exports = function(socket) {
     return socket.broadcast.emit('send:message', {
       user: name,
       placer: data.placer,
-      transrator: data.transrator,
+      translator: data.translator,
       requestId: data.requestId,
       text: data.message
     });

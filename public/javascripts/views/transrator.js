@@ -34,7 +34,7 @@ define(['underscore', 'backbone', 'collections/transrator/transrationList', 'mod
 
     TransratorView.prototype.render = function() {
       var tmp;
-      tmp = $(this.template).text();
+      tmp = this.$el.find(this.template).text();
       return this.$el.find('#transration_list_section').empty().append(_.template(tmp, {
         transrations: this.collection.toJSON()
       }));

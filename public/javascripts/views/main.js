@@ -16,7 +16,7 @@ define(['backbone', 'models/user'], function(Backbone, UserModel) {
     MainView.prototype.events = {
       "click #header .brand": "clickLinkLogo",
       "click #header .navbar-inner .placer": "clickLinkPlacer",
-      "click #header .navbar-inner .transrator": "clickLinkTransrator"
+      "click #header .navbar-inner .translator": "clickLinkTranslator"
     };
 
     MainView.prototype.initialize = function() {
@@ -38,8 +38,8 @@ define(['backbone', 'models/user'], function(Backbone, UserModel) {
       return false;
     };
 
-    MainView.prototype.clickLinkTransrator = function() {
-      App.router.navigate('transrator', {
+    MainView.prototype.clickLinkTranslator = function() {
+      App.router.navigate('translator', {
         trigger: true
       });
       return false;

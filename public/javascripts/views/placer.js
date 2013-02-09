@@ -61,7 +61,7 @@ define(['underscore', 'backbone', 'collections/placer/requestList', 'models/plac
 
     PlacerView.prototype.render = function() {
       var tmp;
-      tmp = $(this.template).text();
+      tmp = this.$el.find(this.template).text();
       return this.$el.find('#request_list_section').empty().append(_.template(tmp, {
         requests: this.collection.toJSON()
       }));

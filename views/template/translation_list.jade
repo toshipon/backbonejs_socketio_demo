@@ -1,0 +1,20 @@
+script(type="text/template", id="translation_list_li")
+	table.table.table-bordered.table-striped.table-hover
+		thead
+			tr
+				th #
+				th placer
+				th original text
+				th translation
+				th status
+				th action
+		tbody
+			<% _.each(translations, function(translation) {  %>
+			tr
+				td <%= translation.requestId %>
+				td <%= translation.placer %>
+				td <%= translation.text %>
+				td wait
+				td
+					p.btn translate
+			<% }); %>

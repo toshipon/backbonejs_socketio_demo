@@ -1,7 +1,7 @@
 var __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-define(['backbone', 'views/main', 'views/placer', 'collections/placer/requestList', 'views/transrator', 'collections/transrator/transrationList'], function(Backbone, MainView, PlacerView, RequestList, TransratorView, TransrationList) {
+define(['backbone', 'views/main', 'views/placer', 'collections/placer/requestList', 'views/translator', 'collections/translator/translationList'], function(Backbone, MainView, PlacerView, RequestList, TranslatorView, TranslationList) {
   var Router;
   return Router = (function(_super) {
 
@@ -13,27 +13,27 @@ define(['backbone', 'views/main', 'views/placer', 'collections/placer/requestLis
 
     Router.prototype.routes = {
       'placer': 'initPlacer',
-      'transrator': 'initTransrator',
+      'translator': 'initTranslator',
       '': 'initMain'
     };
 
-    Router.prototype.initTransrator = function() {
-      console.log('routers/router:initTransrator');
+    Router.prototype.initTranslator = function() {
+      console.log('routers/router:initTranslator');
       if (this.mainView != null) {
         this.mainView.hideMain();
       }
       if (this.placerView != null) {
         this.placerView.hide();
       }
-      if (this.transrationList == null) {
-        this.transrationList = new TransrationList();
+      if (this.translationList == null) {
+        this.translationList = new TranslationList();
       }
-      if (this.transrationView == null) {
-        this.transrationView = new TransratorView({
-          collection: this.transrationList
+      if (this.translationView == null) {
+        this.translationView = new TranslatorView({
+          collection: this.translationList
         });
       }
-      return this.transrationView.show();
+      return this.translationView.show();
     };
 
     Router.prototype.initPlacer = function() {
@@ -41,8 +41,8 @@ define(['backbone', 'views/main', 'views/placer', 'collections/placer/requestLis
       if (this.mainView != null) {
         this.mainView.hideMain();
       }
-      if (this.transrationView != null) {
-        this.transrationView.hide();
+      if (this.translationView != null) {
+        this.translationView.hide();
       }
       if (this.requestList == null) {
         this.requestList = new RequestList();

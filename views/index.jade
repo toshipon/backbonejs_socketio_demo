@@ -6,9 +6,13 @@ block content
 			header
 				h1 Demo of client app due to 
 					a(href="http://socket.io/") socket.io
-				p This project is Client Application demo of Transrafor Service.
+				p This project is Client Application demo of Translafor Service.
 			
-				p Please choose (Placer | Transrafor) from menu.
+				p Please choose (
+					a(href="/placer") Placer
+					|  | 
+					a(href="/translator") Translator
+					| ) from menu.
 
 		// Placer View
 		#placer
@@ -16,64 +20,17 @@ block content
 			a(role="button")#add_request_btn.btn.btn-primary Add request
 			#request_list_section
 
-			div#add_request_modal.modal.hide.fade
-				div.modal-header
-					button(type="button", data-dismiss="modal", aria-hidden="true").close
-					h3 Add Text to Translate
-				div.modal-body
-					textarea(rows="2")#request_textarea
-					div.row
-						.span1
-						select.span3
-							option ja
-						select.span3
-							option en
-						.span5
-				div.modal-footer
-					a(data-dismiss="modal", aria-hidden="true").btn close
-					a.save_btn.btn.btn-primary Save
+			include template/request_modal
+			include template/request_list
 
 
-		// Transrator View
-		#transrator
-			h1 Transrator View
-			#transration_list_section
+		// Translator View
+		#translator
+			h1 Translator View
+			#translation_list_section
+
+			include template/translation_list
 
 
-	// templates
-	script(type="text/template", id="request_list_li")
-		table.table.table-bordered.table-striped.table-hover
-			thead
-				tr
-					th #
-					th transrator
-					th text
-					th status
-			tbody
-				<% _.each(requests, function(request) {  %>
-				tr
-					td <%= request.requestId %>
-					td <%= request.transrator %>
-					td <%= request.text %>
-					td wait
-				<% }); %>
 
-	script(type="text/template", id="transration_list_li")
-		table.table.table-bordered.table-striped.table-hover
-			thead
-				tr
-					th #
-					th placer
-					th text
-					th status
-					th action
-			tbody
-				<% _.each(transrations, function(transration) {  %>
-				tr
-					td <%= transration.requestId %>
-					td <%= transration.placer %>
-					td <%= transration.text %>
-					td wait
-					td
-						p.btn transrate
-				<% }); %>
+

@@ -1,0 +1,16 @@
+script(type="text/template", id="request_list_li")
+	table.table.table-bordered.table-striped.table-hover
+		thead
+			tr
+				th #
+				th translator
+				th text
+				th status
+		tbody
+			<% _.each(requests, function(request) {  %>
+			tr
+				td <%= request.requestId %>
+				td <%= request.translator %>
+				td <%= request.text %>
+				td wait
+			<% }); %>

@@ -36,7 +36,7 @@ app.get('/', routes.index);
 
 app.get('/placer', routes.index);
 
-app.get('/transrator', routes.index);
+app.get('/translator', routes.index);
 
 app.get('/partials/:name', routes.partials);
 
