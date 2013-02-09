@@ -1,33 +1,48 @@
+@import url(./boostrap.min.css);
+/* line 5, ../sass/style.scss */
 body {
-	padding-top: 80px;
-	font-family: "Open Sans", 'Hiragino Kaku Gothic Pro', sans-serif;
+  padding-top: 80px;
+  font-family: "Open Sans", 'Hiragino Kaku Gothic Pro', sans-serif;
 }
 
+/* line 10, ../sass/style.scss */
 a {
-	cursor: pointer;
+  cursor: pointer;
 }
 
+/* line 14, ../sass/style.scss */
 .navbar-inner {
-	background-color: #1CAD7E;
-	border: none;
+  background-color: #1CAD7E;
+  border: none;
 }
 
-#main,#placer,#transrator {
-	display: none;
+/* line 19, ../sass/style.scss */
+#main, #placer, #transrator {
+  display: none;
 }
 
-
+/* line 24, ../sass/style.scss */
 #request_list_section {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 
 /* add request modal */
+/* line 29, ../sass/style.scss */
 .modal h3 {
-	color: #ffffff;
+  color: #ffffff;
 }
-.modal .modal-body,
-.modal .modal-footer {
-	background-color: #ffffff;
+/* line 33, ../sass/style.scss */
+.modal h3 .modal-body,
+.modal h3 .modal-footer {
+  background-color: #ffffff;
 }
-.modal .modal-body textarea { width: 97%; }
-.modal .modal-body select { width: 50px; }
+
+/* line 37, ../sass/style.scss */
+.modal .modal-body textarea {
+  width: 97%;
+}
+
+/* line 38, ../sass/style.scss */
+.modal .modal-body select {
+  width: 50px;
+}

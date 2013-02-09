@@ -62,33 +62,32 @@ module.exports = function(grunt) {
       }
     },
     compass: {
-  	  compile: {
-  		  src: 'public/stylesheets/**/*.scss',
-  		  dest: 'public/stylesheets/main.css',
-  		  options: {
-  		    'include css': true,
-  		    compress: true
-  		  },
-  		  files: {
-  		    'css/main.css': 'sass/main.styl'
-  		  }
-  		}
+      files: ['public/sass/**/*.scss'],
+      dev: {
+        // importPath: '/../..',
+        src: 'public/sass',
+        dest: 'public/stylesheets',
+        linecomments: true,
+        forcecompile: false,
+        debugsass: false,
+        relativeassets: true
+      }
     },
-    sass: { 
-        dev: {
-            files: { 
-                'public/stylesheets/style.css': 'public/sass/style.scss'
-            }
-        }
-    },
+    // sass: { 
+    //     dev: {
+    //         files: { 
+    //             'public/stylesheets/style.css': 'public/sass/style.scss'
+    //         }
+    //     }
+    // },
   	watch: {
       coffee: {
         files: ['<config:coffee.client.src>', '<config:coffee.server.src>', '<config:coffee.test.src>'],
         tasks: 'coffee'
-      // },
-      // compass: {
-      //   files: ['<config:stylus.compile.src>'],
-      //   tasks: 'compass'
+      },
+      compass: {
+        files: ['<config:compass.files>'],
+        tasks: 'compass'
       // },
       // sass: {
       //   files: ['<config:sass.dev.files>'],
@@ -156,7 +155,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib');
   grunt.loadNpmTasks('grunt-coffee');
-  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-compass');
   grunt.loadNpmTasks('grunt-requirejs');
   grunt.loadNpmTasks('grunt-bower');
 

@@ -46,9 +46,11 @@ block content
 				tr
 					th #
 					th text
+					th status
 			tbody
 				<% _.each(requests, function(request) {  %>
 				tr
 					td <%= request.requestId %>
 					td <%= request.text %>
+					td wait
 				<% }); %>
