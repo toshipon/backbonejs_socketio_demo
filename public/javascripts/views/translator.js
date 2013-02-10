@@ -98,15 +98,21 @@ define(['underscore', 'backbone', 'collections/translator/translationList', 'mod
     };
 
     TranslatorView.prototype.updateTranslateStatus = function() {
-      var translationText;
-      translationText = this.modal.find('textarea').val();
-      this.statusCount = (this.statusCount != null) || this.statusCount === 1 ? 0 : 1;
-      this.modalTargetModel.set({
-        translationText: translationText,
-        status: this.statusCount === 0 ? "editing.." : "editing...",
-        translator: App.model.user.get('userName')
-      });
-      return socket.emit('send:message', this.modalTargetModel.attributes);
+      if (this.timer != null) {
+        return;
+      }
+      return this.timer = setTimeout(_.bind(function() {
+        var translationText;
+        translationText = this.modal.find('textarea').val();
+        this.statusCount = (this.statusCount != null) || this.statusCount === 1 ? 0 : 1;
+        this.modalTargetModel.set({
+          translationText: translationText,
+          status: this.statusCount === 0 ? "editing.." : "editing...",
+          translator: App.model.user.get('userName')
+        });
+        socket.emit('send:message', this.modalTargetModel.attributes);
+        return this.timer = null;
+      }, this), 1000);
     };
 
     TranslatorView.prototype.show = function() {

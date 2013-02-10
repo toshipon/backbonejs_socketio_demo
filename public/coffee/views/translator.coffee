@@ -73,13 +73,17 @@ define ['underscore'
 
 			# realtime status update
 			updateTranslateStatus: ()->
-				translationText = @modal.find('textarea').val()
-				@statusCount = if @statusCount? or @statusCount==1 then 0 else 1
-				@modalTargetModel.set
-					translationText: translationText
-					status: if @statusCount == 0 then "editing.."  else "editing..."  
-					translator: App.model.user.get('userName')
-				socket.emit('send:message', @modalTargetModel.attributes)
+				return if @timer?
+				@timer = setTimeout(_.bind(()->
+					translationText = @modal.find('textarea').val()
+					@statusCount = if @statusCount? or @statusCount==1 then 0 else 1
+					@modalTargetModel.set
+						translationText: translationText
+						status: if @statusCount == 0 then "editing.."  else "editing..."  
+						translator: App.model.user.get('userName')
+					socket.emit('send:message', @modalTargetModel.attributes)
+					@timer = null
+				, @), 1000)
 
 			show: ()->
 				@$el.hide().removeClass('hide').fadeIn('normal')

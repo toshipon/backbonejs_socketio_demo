@@ -29,7 +29,7 @@ app.configure(function() {
 
 app.configure('development', function() {
   app.use(express.errorHandler());
-  return app.use(express["static"](__dirname + '/public_dist'));
+  return app.use(express["static"](__dirname + '/public'));
 });
 
 app.configure('production', function() {
