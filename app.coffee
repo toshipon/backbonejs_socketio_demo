@@ -23,15 +23,13 @@ app.configure(()->
   app.use express.cookieParser('your secret here')
   app.use express.session()
   app.use app.router
-  app.use express.static(path.join(__dirname, 'public'))
 )
 
 app.configure('development', ()->
   app.use(express.errorHandler())
-  app.use(express.static(__dirname + '/public'))
+  app.use(express.static(__dirname + '/public_dist'))
 )
 app.configure('production', ()->
-  app.use(express.errorHandler())
   app.use(express.static(__dirname + '/public_dist'))
 )
 

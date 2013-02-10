@@ -24,17 +24,15 @@ app.configure(function() {
   app.use(express.methodOverride());
   app.use(express.cookieParser('your secret here'));
   app.use(express.session());
-  app.use(app.router);
-  return app.use(express["static"](path.join(__dirname, 'public')));
+  return app.use(app.router);
 });
 
 app.configure('development', function() {
   app.use(express.errorHandler());
-  return app.use(express["static"](__dirname + '/public'));
+  return app.use(express["static"](__dirname + '/public_dist'));
 });
 
 app.configure('production', function() {
-  app.use(express.errorHandler());
   return app.use(express["static"](__dirname + '/public_dist'));
 });
 
