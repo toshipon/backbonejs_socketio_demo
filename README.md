@@ -44,4 +44,4 @@ node app.js
 
 ## demo
 
-http://transration.herokuapp.com/
+http://translation.herokuapp.com/
