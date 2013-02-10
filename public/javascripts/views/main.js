@@ -25,10 +25,13 @@ define(['backbone', 'models/user'], function(Backbone, UserModel) {
       return App.socket.on('init', _.bind(this.initSocketCommunication, this));
     };
 
-    MainView.prototype.initSocketCommunication = function(param) {
+    MainView.prototype.initSocketCommunication = function(result) {
       console.log("views/main.initSocketCommunication");
-      App.model.user.set('userName', param.name);
-      return this.$el.find('#header .user_name').text("Your name is " + param.name);
+      App.model.user.set({
+        'id': result.id,
+        'userName': result.name
+      });
+      return this.$el.find('#header .user_name').text("Your name is " + result.name);
     };
 
     MainView.prototype.clickLinkLogo = function() {

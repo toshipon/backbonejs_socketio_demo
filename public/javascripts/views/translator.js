@@ -60,13 +60,15 @@ define(['underscore', 'backbone', 'collections/translator/translationList', 'mod
       })[0];
       if (this.modalTargetModel != null) {
         this.modal.find('textarea').val(this.modalTargetModel.get('translation'));
-        this.modal.find('.original_text').text(this.modalTargetModel.get('originalText'));
-        this.modal.modal();
+        this.modal.modal().find('.original_text').text(this.modalTargetModel.get('originalText'));
         this.modalTargetModel.set({
           translator: App.model.user.get('userName'),
           status: "acceptance"
         });
-        return socket.emit('send:message', this.modalTargetModel.attributes);
+        socket.emit('send:message', this.modalTargetModel.attributes);
+        return setTimeout(_.bind(function() {
+          return this.modal.find('textarea').focus();
+        }, this), 1000);
       }
     };
 

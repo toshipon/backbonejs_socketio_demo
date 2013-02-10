@@ -13,10 +13,12 @@ define ['backbone', 'models/user'], (Backbone, UserModel) ->
 			App.model.user = new UserModel()
 			App.socket.on('init', _.bind(@initSocketCommunication, @))
 
-		initSocketCommunication: (param)->
+		initSocketCommunication: (result)->
 			console.log "views/main.initSocketCommunication"
-			App.model.user.set 'userName', param.name
-			@$el.find('#header .user_name').text "Your name is #{param.name}"
+			App.model.user.set 
+				'id': result.id
+				'userName': result.name
+			@$el.find('#header .user_name').text "Your name is #{result.name}"
 
 		clickLinkLogo: ()->
 			App.router.navigate '', {trigger: true}

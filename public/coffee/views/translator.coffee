@@ -24,8 +24,8 @@ define ['underscore'
 				console.log "translatorView.receiveMessage"
 				console.log "================="
 				if result.placer != App.model.user.get 'userName'
-					# new
 					list = @collection.where(requestId: result.requestId)
+					# new
 					if list.length > 0
 						list[0].set result
 					# update
@@ -42,12 +42,14 @@ define ['underscore'
 				@modalTargetModel = @collection.where(requestId:$tr.data('id'))[0]
 				if @modalTargetModel?
 					@modal.find('textarea').val(@modalTargetModel.get('translation'))
-					@modal.find('.original_text').text @modalTargetModel.get('originalText')
-					@modal.modal()
+					@modal.modal().find('.original_text').text @modalTargetModel.get('originalText')
 					@modalTargetModel.set
 						translator: App.model.user.get('userName')
 						status: "acceptance"
 					socket.emit('send:message', @modalTargetModel.attributes)
+					setTimeout(_.bind(()->
+						@modal.find('textarea').focus()
+					,@),1000)
 
 			clickModelSaveBtn: ()->
 				console.log "placerView.clickModelSaveBtn"

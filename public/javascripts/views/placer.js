@@ -28,7 +28,10 @@ define(['underscore', 'backbone', 'collections/placer/requestList', 'models/plac
 
     PlacerView.prototype.openRequestModel = function() {
       console.log("placerView.clickOpenModel");
-      return this.modal.modal().find('textarea').val('');
+      this.modal.modal().find('textarea').val('');
+      return setTimeout(_.bind(function() {
+        return this.modal.find('textarea').focus();
+      }, this), 1000);
     };
 
     PlacerView.prototype.clickModelSaveBtn = function() {
@@ -40,10 +43,10 @@ define(['underscore', 'backbone', 'collections/placer/requestList', 'models/plac
         placer: App.model.user.get('userName'),
         status: "wait"
       });
-      model.set('requestId', model.cid);
+      model.set('requestId', "" + (App.model.user.get('id')) + model.cid);
       this.collection.add(model);
       this.render();
-      this.modal.find('.close').click();
+      this.modal.modal('hide');
       return socket.emit('send:message', model.attributes);
     };
 

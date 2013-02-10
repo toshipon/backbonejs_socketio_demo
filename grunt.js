@@ -120,28 +120,28 @@ module.exports = function(grunt) {
             appDir: '',
             baseUrl: 'javascripts',
             modules: [{
-            	name: 'main'
+            	name: 'client'
             }],
-            paths: {
-                underscore: 'lib/underscore/underscore',
-                jquery    : 'lib/jquery/jquery.min',
-                easing: 'lib/jquery/jquery.easing.1.3',
-                backbone  : 'lib/backbone/backbone',
-                require: 'lib/require/require',
-                text: 'lib/require/text'
-            },
-            shim: {
-	            underscore: {
-	            exports: "_"
-	          },
-	            backbone: {
-	            deps: ['underscore', 'jquery'],
-	            exports: 'Backbone'
-	          },
-	            'backbone.localStorage': {
-	            deps: ['backbone'],
-	            exports: 'Backbone'
-	          }
+           //  paths: {
+           //      underscore: 'lib/underscore/underscore',
+           //      jquery    : 'lib/jquery/jquery.min',
+           //      easing: 'lib/jquery/jquery.easing.1.3',
+           //      backbone  : 'lib/backbone/backbone',
+           //      require: 'lib/require/require',
+           //      text: 'lib/require/text'
+           //  },
+           //  shim: {
+	          //   underscore: {
+	          //   exports: "_"
+	          // },
+	          //   backbone: {
+	          //   deps: ['underscore', 'jquery'],
+	          //   exports: 'Backbone'
+	          // },
+	          //   'backbone.localStorage': {
+	          //   deps: ['backbone'],
+	          //   exports: 'Backbone'
+	          // }
 	        },
           pragmas: {
               doExclude: true

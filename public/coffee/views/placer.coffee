@@ -22,6 +22,9 @@ define [ 'underscore'
 			openRequestModel: ()->
 				console.log "placerView.clickOpenModel"
 				@modal.modal().find('textarea').val('')
+				setTimeout(_.bind(()->
+					@modal.find('textarea').focus()
+				,@),1000)
 
 			clickModelSaveBtn: ()->
 				console.log "placerView.clickModelSaveBtn"
@@ -30,18 +33,18 @@ define [ 'underscore'
 					originalText: text
 					placer: App.model.user.get('userName')
 					status: "wait"
-				model.set 'requestId', model.cid
+				model.set 'requestId', "#{App.model.user.get('id')}#{model.cid}"
 				@collection.add(model)
 				@render()
-				@modal.find('.close').click()
+				@modal.modal('hide')
 				socket.emit('send:message', model.attributes)
 
 			receiveMessage: (result)->
 				console.log "placerView.receiveMessage"
 				console.log "================="
 				if result.placer == App.model.user.get('userName')
-					# new
 					list = @collection.where(requestId: result.requestId)
+					# new
 					if list.length > 0
 						list[0].set result
 					# update
