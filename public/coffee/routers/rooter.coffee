@@ -31,7 +31,7 @@ define ['backbone'
 
 			initMain: ()->
 				console.log 'routers/router:initMain'
-				@transrationView.hide() if @transrationView?
+				@translationView.hide() if @translationView?
 				@placerView.hide() if @placerView?
 
 				@mainView = new MainView() unless @mainView?

@@ -57,8 +57,8 @@ define(['backbone', 'views/main', 'views/placer', 'collections/placer/requestLis
 
     Router.prototype.initMain = function() {
       console.log('routers/router:initMain');
-      if (this.transrationView != null) {
-        this.transrationView.hide();
+      if (this.translationView != null) {
+        this.translationView.hide();
       }
       if (this.placerView != null) {
         this.placerView.hide();
