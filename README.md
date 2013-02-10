@@ -1,8 +1,8 @@
 # Backbone.js socket.io demo #
 ================
 
-This project is Client Application demo of Transrafor Service.
-Please choose (Placer | Transrafor) from menu.
+This project is Client Application demo of Translafor Service.
+Please choose (Placer | Translafor) from menu.
 
 ## setup
 
