@@ -17,8 +17,8 @@ script(type="text/template", id="translation_list_li")
 				td <%= translation.translationText %>
 				td <%= translation.status %>
 				td
-					<% if(translation.status === "translated") { %>
-					p complete
+					<% if(translation.status !== "wait") { %>
+					p none
 					<% } else { %>
 					p.btn.translate_btn translate
 					<% } %>
