@@ -1,0 +1,1 @@
+var __hasProp={}.hasOwnProperty,__extends=function(e,t){function r(){this.constructor=e}for(var n in t)__hasProp.call(t,n)&&(e[n]=t[n]);return r.prototype=t.prototype,e.prototype=new r,e.__super__=t.prototype,e};define(["backbone"],function(e){var t;return t=function(e){function t(){return t.__super__.constructor.apply(this,arguments)}return __extends(t,e),t}(e.Model)})

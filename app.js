@@ -29,7 +29,13 @@ app.configure(function() {
 });
 
 app.configure('development', function() {
-  return app.use(express.errorHandler());
+  app.use(express.errorHandler());
+  return app.use(express["static"](__dirname + '/public'));
+});
+
+app.configure('production', function() {
+  app.use(express.errorHandler());
+  return app.use(express["static"](__dirname + '/public_dist'));
 });
 
 app.get('/', routes.index);

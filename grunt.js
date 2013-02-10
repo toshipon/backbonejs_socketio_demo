@@ -31,14 +31,14 @@ module.exports = function(grunt) {
       }
     },
     coffee: {
-  	  client: {
-  	    src   : ['public/coffee/**/*.coffee'],
-  	    dest  : 'public/javascripts',
-  	    options: {
-  	    	preserve_dirs: true,
-  	        base_path: 'public/coffee'
-  	    }
-  	  },
+      client: {
+        src   : ['public/coffee/**/*.coffee'],
+        dest  : 'public/javascripts',
+        options: {
+          preserve_dirs: true,
+            base_path: 'public/coffee'
+        }
+      },
       server: {
         src   : ['*.coffee', 'routes/*.coffee'],
         dest  : './',
@@ -47,15 +47,15 @@ module.exports = function(grunt) {
             base_path: './'
         }
       },
-  	  test:{
-  	    src : ['test/spec_coffee/**/*.coffee'],
-  	    dest: 'test/spec/',
-  	    options: {
-  	        preserve_dirs: true,
-  	        base_path: 'test/spec_coffee'
-  	    }
-  	  }
-  	},
+      test:{
+        src : ['test/spec_coffee/**/*.coffee'],
+        dest: 'test/spec/',
+        options: {
+            preserve_dirs: true,
+            base_path: 'test/spec_coffee'
+        }
+      }
+    },
     bower: {
       dev: {
         dest: 'public/javascripts/lib'
@@ -73,14 +73,7 @@ module.exports = function(grunt) {
         relativeassets: true
       }
     },
-    // sass: { 
-    //     dev: {
-    //         files: { 
-    //             'public/stylesheets/style.css': 'public/sass/style.scss'
-    //         }
-    //     }
-    // },
-  	watch: {
+    watch: {
       coffee: {
         files: ['<config:coffee.client.src>', '<config:coffee.server.src>', '<config:coffee.test.src>'],
         tasks: 'coffee'
@@ -88,10 +81,6 @@ module.exports = function(grunt) {
       compass: {
         files: ['<config:compass.files>'],
         tasks: 'compass'
-      // },
-      // sass: {
-      //   files: ['<config:sass.dev.files>'],
-      //   tasks: 'sass'
       }
     },
     jshint: {
@@ -115,40 +104,35 @@ module.exports = function(grunt) {
     uglify: {},
     requirejs: {
         js : {
-        	clearTarget: false,
-        	dir: 'public',
-          appDir: '',
-          baseUrl: 'javascripts',
-          modules: [{
-          	name: 'client'
-          }],
-          paths: {
-              underscore: 'lib/underscore/underscore',
-              jquery    : 'lib/jquery/jquery.min',
-              easing: 'lib/jquery/jquery.easing.1.3',
-              backbone  : 'lib/backbone/backbone',
-              require: 'lib/require/require',
-              text: 'lib/require/text'
-          },
+          // almond: true,
+          clearTarget: false,
+          dir: "public_dist",
+          appDir: "public",
+          baseUrl: "javascripts",
+          modules: [{ name:'client'}],
           shim: {
-              underscore: {
-              exports: "_"
+            'underscore': {
+              exports: '_'
             },
-            backbone: {
-              deps: ['underscore', 'jquery'],
-              exports: 'Backbone'
-            },
-            'backbone.localStorage': {
-              deps: ['backbone'],
+            'backbone': {
+              deps: ['underscore'],
               exports: 'Backbone'
             }
-	        },
+          },
+          paths: {
+            underscore: 'lib/underscore',
+            backbone: 'lib/backbone',
+            text: 'lib/text',
+            socketio: 'empty:',
+            jade: 'lib/jade.min',
+            bootstrap: 'lib/bootstrap'
+          },
           pragmas: {
               doExclude: true
           },
           skipModuleInsertion: false,
-          optimizeAllPluginResources: false,
-          findNestedDependencies: false
+          optimizeAllPluginResources: true,
+          findNestedDependencies: true
         }
       }
   });
@@ -162,5 +146,6 @@ module.exports = function(grunt) {
   // Default task.
 //  grunt.registerTask('default', 'lint qunit concat min');
   grunt.registerTask('default', 'watch');
+  grunt.registerTask('release', 'coffee compass requirejs');
 
 };

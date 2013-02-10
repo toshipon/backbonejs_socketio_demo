@@ -2,3 +2,5 @@ node_modules
 components
 .sass-cache
 .DS_Store
+public_dist/coffee
+public_dist/sass
