@@ -11,7 +11,7 @@ define [ 'underscore'
 			template: '#request_list_li'
 			
 			events:
-				"click #add_request_btn": "clickOpenModel"
+				"click #add_request_btn": "openRequestModel"
 				"click #add_request_modal .save_btn": "clickModelSaveBtn"
 
 			initialize: ->
@@ -19,30 +19,34 @@ define [ 'underscore'
 				@modal = @$el.find "#add_request_modal"
 				socket.on 'send:message', _.bind(@receiveMessage, @)
 
-			clickOpenModel: ()->
+			openRequestModel: ()->
 				console.log "placerView.clickOpenModel"
 				@modal.modal().find('textarea').val('')
 
 			clickModelSaveBtn: ()->
 				console.log "placerView.clickModelSaveBtn"
 				text = @modal.find('textarea').val()
-				model = new RequestModel(text: text, placer: App.model.user.get('userName'))
+				model = new RequestModel
+					originalText: text
+					placer: App.model.user.get('userName')
+					status: "wait"
 				model.set 'requestId', model.cid
 				@collection.add(model)
 				@render()
 				@modal.find('.close').click()
-
-				socket.emit('send:message', {
-			      message: text
-			      requestId: model.cid
-			      placer: model.get 'placer'
-			    })
+				socket.emit('send:message', model.attributes)
 
 			receiveMessage: (result)->
 				console.log "placerView.receiveMessage"
 				console.log "================="
-				if result.user == App.model.user.get('userName')
-					@collection.add(new RequestModel(result))
+				if result.placer == App.model.user.get('userName')
+					# new
+					list = @collection.where(requestId: result.requestId)
+					if list.length > 0
+						list[0].set result
+					# update
+					else
+						@collection.add(new RequestModel(result))
 					@render()
 
 			render: ->

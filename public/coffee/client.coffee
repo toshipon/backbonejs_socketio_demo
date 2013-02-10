@@ -18,7 +18,7 @@ require.config
 		underscore: 'lib/underscore'
 		backbone: 'lib/backbone'
 		text: 'lib/text'
-		socketio: 'lib/socket.io.min'
+		socketio: '../socket.io/socket.io'
 		jade: 'lib/jade.min'
 		bootstrap: 'lib/bootstrap'
 	},

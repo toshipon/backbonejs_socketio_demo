@@ -57,13 +57,8 @@ module.exports = function(socket) {
   });
   socket.on('send:message', function(data) {
     console.log("=========send:message==============");
-    return socket.broadcast.emit('send:message', {
-      user: name,
-      placer: data.placer,
-      translator: data.translator,
-      requestId: data.requestId,
-      text: data.message
-    });
+    data.user = name;
+    return socket.broadcast.emit('send:message', data);
   });
   return socket.on('disconnect', function() {
     socket.broadcast.emit('user:left', {

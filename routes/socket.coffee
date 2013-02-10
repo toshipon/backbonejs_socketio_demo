@@ -56,12 +56,8 @@ module.exports =  (socket)->
   # broadcast a user's message to other users
   socket.on 'send:message',  (data)->
     console.log "=========send:message=============="
-    socket.broadcast.emit 'send:message',
-      user: name,
-      placer: data.placer,
-      translator: data.translator,
-      requestId: data.requestId,
-      text: data.message
+    data.user = name
+    socket.broadcast.emit 'send:message', data
 
   # clean up when a user leaves, and broadcast it to other users
   socket.on 'disconnect',  ()->

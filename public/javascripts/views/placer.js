@@ -16,7 +16,7 @@ define(['underscore', 'backbone', 'collections/placer/requestList', 'models/plac
     PlacerView.prototype.template = '#request_list_li';
 
     PlacerView.prototype.events = {
-      "click #add_request_btn": "clickOpenModel",
+      "click #add_request_btn": "openRequestModel",
       "click #add_request_modal .save_btn": "clickModelSaveBtn"
     };
 
@@ -26,7 +26,7 @@ define(['underscore', 'backbone', 'collections/placer/requestList', 'models/plac
       return socket.on('send:message', _.bind(this.receiveMessage, this));
     };
 
-    PlacerView.prototype.clickOpenModel = function() {
+    PlacerView.prototype.openRequestModel = function() {
       console.log("placerView.clickOpenModel");
       return this.modal.modal().find('textarea').val('');
     };
@@ -36,25 +36,30 @@ define(['underscore', 'backbone', 'collections/placer/requestList', 'models/plac
       console.log("placerView.clickModelSaveBtn");
       text = this.modal.find('textarea').val();
       model = new RequestModel({
-        text: text,
-        placer: App.model.user.get('userName')
+        originalText: text,
+        placer: App.model.user.get('userName'),
+        status: "wait"
       });
       model.set('requestId', model.cid);
       this.collection.add(model);
       this.render();
       this.modal.find('.close').click();
-      return socket.emit('send:message', {
-        message: text,
-        requestId: model.cid,
-        placer: model.get('placer')
-      });
+      return socket.emit('send:message', model.attributes);
     };
 
     PlacerView.prototype.receiveMessage = function(result) {
+      var list;
       console.log("placerView.receiveMessage");
       console.log("=================");
-      if (result.user === App.model.user.get('userName')) {
-        this.collection.add(new RequestModel(result));
+      if (result.placer === App.model.user.get('userName')) {
+        list = this.collection.where({
+          requestId: result.requestId
+        });
+        if (list.length > 0) {
+          list[0].set(result);
+        } else {
+          this.collection.add(new RequestModel(result));
+        }
         return this.render();
       }
     };

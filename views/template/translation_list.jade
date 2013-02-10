@@ -10,11 +10,16 @@ script(type="text/template", id="translation_list_li")
 				th action
 		tbody
 			<% _.each(translations, function(translation) {  %>
-			tr
+			tr(data-id!="<%= translation.requestId %>").translation_tr
 				td <%= translation.requestId %>
 				td <%= translation.placer %>
-				td <%= translation.text %>
-				td wait
+				td <%= translation.originalText %>
+				td <%= translation.translationText %>
+				td <%= translation.status %>
 				td
-					p.btn translate
+					<% if(translation.status === "translated") { %>
+					p complete
+					<% } else { %>
+					p.btn.translate_btn translate
+					<% } %>
 			<% }); %>
