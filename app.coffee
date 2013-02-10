@@ -27,7 +27,7 @@ app.configure(()->
 
 app.configure('development', ()->
   app.use(express.errorHandler())
-  app.use(express.static(__dirname + '/public_dist'))
+  app.use(express.static(__dirname + '/public'))
 )
 app.configure('production', ()->
   app.use(express.static(__dirname + '/public_dist'))
