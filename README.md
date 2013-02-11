@@ -14,6 +14,7 @@ http://nodejs.org/
 * install npm modules
 
 	```
+cd backbonejs_socketio_demo
 npm install
 	```
 
@@ -33,7 +34,7 @@ npm install grunt -g
 (if Ruby is not installed, please install it.)
 
 	```
-sudo gem install compass
+gem install compass
 	```
 
 * Run Application
